@@ -3,3 +3,4 @@ This project implements username and password protected routes using "react-rout
 In addition to implementing protected routes, this project also implements user-level/role-based authentication, meaning diferent users
 have different level of authorisation access, while some users have access to all the routes, other users only have access to some of the routes
 mimicking organisational hierarchy authorisation levels.
+The backend component will be uploaded seperately.
