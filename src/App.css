@@ -1,38 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html,button,input{
+  font-size: 50%;
+    font-family: 'Nunito', sans-serif;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
+  width: 100vw;
+  font-family: 'Nunito', sans-serif;
+}
+/* ////// */
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 5rem;
+  height: 7rem;
+  box-shadow: 0rem 1rem 3rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.navigation{
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+
+}
+ul{
+  display: flex;
+  height: 7rem;
+}
+li{
+  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+}
+a{
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  padding-inline: 3rem;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #000000;
+  transition: font-size 2s ease;
+}
+
+a:active{
+  background-color: #e7e7ed;
+  transform: scale(1.2);
+}
+.logo a{
+  all: unset;
+  font-size: 3.2rem;
+  letter-spacing: 1.5rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  height: 7rem;
+  cursor: pointer;
+}
+main{
+  height: calc(100vh - 7rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+h2{
+  font-size: 3.2rem;
+}
+p{
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 1.5rem;
+}
+input{
+  width: 28rem;
+  height: 4rem;
+  border-radius: 5rem;
+  border: 0.1rem solid #b8b8ba;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+
+}
+button{
+  font-size: 1.6rem;
+  cursor: pointer;
+  background-color: transparent;
+  font-weight: 600;
+  border: none;
+  padding-inline: 3rem;
+  color: blueviolet;
+}
+#login-btn{
+  background-color: blueviolet;
+  border: 0.1rem solid blueviolet;
+  padding: 1rem 3rem;
+  border-radius: 5rem;
+  color: #ffffff;
+}
+#login-btn:active{
+  background: transparent;
+  color: blueviolet;
+}
+.btnDiv{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.formControl{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+label{
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
 }

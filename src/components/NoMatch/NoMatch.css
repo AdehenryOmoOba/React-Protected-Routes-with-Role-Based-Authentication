@@ -1,0 +1,21 @@
+.noMatch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh;
+}
+.noMatch p{
+    margin-bottom: 5rem;
+}
+.noMatch button{
+    background-color: blueviolet;
+    border: 0.1rem solid blueviolet;
+    padding: 1rem 3rem;
+    border-radius: 5rem;
+    color: #ffffff;
+  }
+  .noMatch button:active{
+    background: transparent;
+    color: blueviolet;
+  }
