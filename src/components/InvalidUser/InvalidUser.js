@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 function InvalidUser() {
   const navigate = useNavigate();
-  const { login, auth, error } = useAuthContext();
+  const { login, error } = useAuthContext();
 
   const loginHandler = () => {
     login(null);
     navigate("/login");
-    console.log(auth);
   };
 
   return (

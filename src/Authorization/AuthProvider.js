@@ -7,8 +7,6 @@ function AuthProvider({ children }) {
   const [error, setError] = useState("");
   const [roles, setRoles] = useState([]);
 
-  console.log(auth);
-
   const login = (userInfo) => {
     setAuth(userInfo);
   };

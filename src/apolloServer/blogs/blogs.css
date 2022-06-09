@@ -1,0 +1,32 @@
+
+#blogs h2{
+    margin-top: 1rem;
+}
+#blogs ul{
+    flex-direction: column;
+    margin-top: 1rem;
+    align-items: center;
+}
+#blogs ul li{
+   background-color: blueviolet;
+   margin: 0.5rem 0rem;
+   width: max-content;
+   padding: 0.5rem 0rem;
+   border-radius: 5rem;
+   transition: all 0.5s ease;
+}
+#blogs ul li a,#blogs ul li a:active,#blogs ul li a:hover{
+    all: unset;
+    width: max-content;
+    /* display: inline-block; */
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 0.5rem 2rem;
+    color: #ffffff;
+    cursor: pointer;
+}
+#blogs ul li:hover{
+  color: #ffffff;
+  transform: scale(1.1);
+  background-color: blue;
+}

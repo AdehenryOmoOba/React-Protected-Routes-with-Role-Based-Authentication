@@ -43,6 +43,7 @@ function Header() {
       {auth !== "loading" && auth && (
         <button onClick={logoutHandler}>Logout</button>
       )}
+      {!auth && <button onClick={logoutHandler}>Login</button>}
     </header>
   );
 }

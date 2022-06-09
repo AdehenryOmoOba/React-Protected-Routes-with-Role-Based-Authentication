@@ -12,7 +12,6 @@ import Workers from "./components/Workers/Workers";
 import InvalidUser from "./components/InvalidUser/InvalidUser";
 import AuthProvider from "./Authorization/AuthProvider";
 import RequireAuth from "./RequireAuth/RequireAuth";
-import Loading from "./components/Loading/Loading";
 import Unauthorised from "./components/Unauthorised/Unauthorised";
 
 function App() {
@@ -63,7 +62,6 @@ function App() {
             }
           />
           <Route path="/login" element={<Login />} />
-          <Route path="/loading" element={<Loading />} />
           <Route path="/invaliduser" element={<InvalidUser />} />
           <Route path="/unauthorised" element={<Unauthorised />} />
           <Route path="*" element={<NoMatch />} />

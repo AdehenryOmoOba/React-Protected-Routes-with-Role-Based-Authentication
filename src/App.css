@@ -45,6 +45,7 @@ li{
 a{
   text-decoration: none;
   height: 100%;
+  width: max-content;
   display: flex;
   padding-inline: 3rem;
   align-items: center;

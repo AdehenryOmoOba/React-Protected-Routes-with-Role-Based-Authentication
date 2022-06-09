@@ -14,9 +14,6 @@ function RequireAuth({ children }) {
     workers: 555,
   };
 
-  console.log("ROLES", roles);
-  console.log("VISIT", pathCodes[pathName]);
-
   if (auth === null) {
     return <Navigate to="/login" state={{ path: location.pathname }} replace />;
   }
