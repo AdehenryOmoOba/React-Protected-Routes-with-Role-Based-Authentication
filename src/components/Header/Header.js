@@ -43,7 +43,12 @@ function Header() {
       {auth !== "loading" && auth && (
         <button onClick={logoutHandler}>Logout</button>
       )}
-      {!auth && <button onClick={logoutHandler}>Login</button>}
+      {!auth && <button onClick={() => navigate("/login")}>Login</button>}
+      {!auth && (
+        <button onClick={() => navigate("/register")} id="register-btn">
+          Register
+        </button>
+      )}
     </header>
   );
 }

@@ -55,7 +55,7 @@ function Login() {
   } else {
     return (
       <main>
-        <p>Please login with your credentials!</p>
+        <p>Login here!</p>
         <div className="formControl">
           <label htmlFor="username">Username</label>
           <input

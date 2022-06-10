@@ -13,6 +13,7 @@ import InvalidUser from "./components/InvalidUser/InvalidUser";
 import AuthProvider from "./Authorization/AuthProvider";
 import RequireAuth from "./RequireAuth/RequireAuth";
 import Unauthorised from "./components/Unauthorised/Unauthorised";
+import Register from "./components/Register/Register";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
             }
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/invaliduser" element={<InvalidUser />} />
           <Route path="/unauthorised" element={<Unauthorised />} />
           <Route path="*" element={<NoMatch />} />

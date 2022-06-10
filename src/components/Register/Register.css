@@ -1,0 +1,12 @@
+#register-error,#register-success {
+    background-color: #ee2e2e;
+    color: #ffffff;
+    width: max-content;
+    padding: 0.5rem 2rem;
+    border-radius: 5rem;
+    font-size: 1.8rem;
+}
+#register-success {
+    background-color: #05cf05;
+  
+}
