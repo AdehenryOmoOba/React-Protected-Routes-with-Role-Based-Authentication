@@ -3,6 +3,8 @@ import "../../App.css";
 import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../Authorization/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
   const navigate = useNavigate();
@@ -17,6 +19,9 @@ function Header() {
     <header>
       <div className="logo">
         <NavLink to="/">LOGO</NavLink>
+      </div>
+      <div>
+        <FontAwesomeIcon icon={faCoffee} />
       </div>
       <div className="navigation">
         <ul>
@@ -41,9 +46,15 @@ function Header() {
         </ul>
       </div>
       {auth !== "loading" && auth && (
-        <button onClick={logoutHandler}>Logout</button>
+        <button onClick={logoutHandler} id="logout-link-btn">
+          Logout
+        </button>
       )}
-      {!auth && <button onClick={() => navigate("/login")}>Login</button>}
+      {!auth && (
+        <button onClick={() => navigate("/login")} id="login-link-btn">
+          Login
+        </button>
+      )}
       {!auth && (
         <button onClick={() => navigate("/register")} id="register-btn">
           Register

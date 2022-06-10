@@ -34,11 +34,16 @@ function Login() {
   function loginHandler() {
     loginUser()
       .then((result) => {
+        if (result.error) {
+          throw Error(`Connection error: ${result.error.message}`);
+        }
+
         if (result.data.login.success) {
           login(result.data.login.username);
           setRoles(result.data.login.roles);
           navigate(redirect, { replace: true });
         }
+
         if (result.data.login.error) {
           throw Error(result.data.login.error);
         }

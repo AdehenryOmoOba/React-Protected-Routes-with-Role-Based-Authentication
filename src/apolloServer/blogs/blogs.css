@@ -8,25 +8,23 @@
     align-items: center;
 }
 #blogs ul li{
-   background-color: blueviolet;
-   margin: 0.5rem 0rem;
-   width: max-content;
-   padding: 0.5rem 0rem;
-   border-radius: 5rem;
+    background-color: blueviolet;
    transition: all 0.5s ease;
+   padding: 0;
+   border-radius: 5rem;
+   transition: all 0.5s smooth;
 }
-#blogs ul li a,#blogs ul li a:active,#blogs ul li a:hover{
-    all: unset;
-    width: max-content;
-    /* display: inline-block; */
+#blogs ul li a{
+    padding: 1.5rem 1.5rem;
     font-size: 1.6rem;
-    font-weight: 700;
-    padding: 0.5rem 2rem;
     color: #ffffff;
     cursor: pointer;
+    display: grid;
+    place-content: center;
+    transition: all 0.5s smooth;
 }
-#blogs ul li:hover{
-  color: #ffffff;
+#blogs ul li:hover,#blogs ul a:hover{
   transform: scale(1.1);
   background-color: blue;
+
 }
