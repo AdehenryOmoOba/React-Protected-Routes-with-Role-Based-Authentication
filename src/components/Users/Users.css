@@ -52,6 +52,7 @@
     height: 6rem;
     width: 65%;
     transition: all 0.5s ease;
+    margin-bottom: 4rem;
 }
 #filter,#search{
 height: 80%;
@@ -101,7 +102,6 @@ height: 80%;
     width: 100%;
     justify-content: flex-end;
     transition: all 0.5s ease;
-
 }
 #search input{
     all: unset;
@@ -134,4 +134,154 @@ height: 80%;
     color: #ffffff;
     height: 100%;
     border-radius: 5rem;
+}
+#users-container{
+    height: max-content;
+    width: 60%;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    transition: all 0.5s ease;
+}
+#users-container #user{
+    height: 11rem;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    cursor: pointer;
+    display: flex;
+}
+#users-container #user:not(:last-child){
+    margin-bottom: 1rem;
+}
+#user #left, #user #right{
+    height: 100%;
+    width: 50%;
+}
+#user #left{
+    position: relative;
+    border-radius: 1rem 0 0 1rem ;
+    padding-inline: 2rem;
+}
+#user #left::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 1rem;
+    inset: 0 auto 0 0;
+    background-color: #9af69a;
+    border-radius: 1rem 0 0 1rem;
+}
+#user #left span{
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #f42547;
+
+}
+
+#user #left p .user-info{
+    font-weight: normal;
+    background: transparent;
+    width: max-content;
+    padding: 0.5rem 1rem;
+    border-radius: 5rem;
+}
+#user #right{
+    border-radius: 0 1rem 1rem 0 ;
+    justify-content: flex-end;
+    padding-inline: 3rem;
+}
+#role-edit-delete div:first-child{
+    z-index: 10;
+}
+#role-edit-delete div:nth-child(2){
+    z-index: 10;
+    opacity: 0;
+    height: 4rem;
+    width: 20rem;
+}
+#user #right:hover > #role-edit-delete div:first-child{
+    top: 30%;
+}
+#user #right:hover > #role-edit-delete div:nth-child(2){
+    top: 70%;
+    opacity: 1;
+}
+#role-edit-delete{
+    position: relative;
+    height: 90%;
+    width: 20rem;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#role-edit-delete div{
+    position: absolute;
+    height: 3.5rem;
+    width: max-content;
+    padding: 0;
+    border-radius: 0.5rem;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    transition: all 0.5s ease;
+}
+#role-edit-delete #role-div{
+    background-color: blueviolet;
+}
+#role-edit-delete #role{
+    color: #ffffff;
+    font-size: 1.6rem;
+
+}
+#role-edit-delete #role::after{
+    position: absolute;
+    content: "";
+    height: 1rem;
+    width: 1rem;
+    background-color: #9af69a;
+    inset: -0.6rem -0.6rem auto auto;
+    border: 0.3rem solid #ffffff;
+    border-radius: 2rem;
+}
+
+#role-edit-delete #edit-delete #edit,#role-edit-delete #edit-delete #delete{
+    background-color: transparent;
+    border: 0.1rem solid #dad9d9;
+    margin-inline: 0.1rem;
+    padding-inline: 1rem;
+    height: 3.5rem;
+    border-radius: 0.5rem;
+    width: max-content;
+}
+#edit-delete p{
+    padding: 0;
+    width: max-content;
+    font-size: 1.6rem;
+    color: #ff4e6b;
+}
+#edit-delete #edit,#edit-delete #delete{
+    all: unset;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+[data-icon="pen-to-square"]{
+    color: blueviolet;
+    background-color: #ead7f9;
+    padding: 0.7rem;
+    border-radius: 5rem;
+    display: grid;
+    place-content: center;
+}
+[data-icon="trash-can"]{
+    color: red;
+    background-color: #ffbebe;
+    padding: 0.7rem;
+    border-radius: 5rem;
+    display: grid;
+    place-content: center;
 }

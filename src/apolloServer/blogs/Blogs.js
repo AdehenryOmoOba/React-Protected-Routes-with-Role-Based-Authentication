@@ -9,7 +9,7 @@ function Blogs() {
   return (
     <div id="blogs">
       <h2>🌸Blogs🌸</h2>
-      {loading && <h2>Loading...</h2>}
+      {loading && <p style={{ textAlign: "center" }}>Loading...</p>}
       <ul>
         {data &&
           data.allBlogs.map((blog, index) => (
