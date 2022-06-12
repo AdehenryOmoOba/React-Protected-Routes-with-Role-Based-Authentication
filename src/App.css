@@ -56,7 +56,7 @@ a{
   border-radius: 5rem;
   transition: all 0.5s ease;
 }
-#register-btn,#login-link-btn,#logout-link-btn{
+#register-btn,#login-link-btn,#logout-link-btn,#dropdown-btn{
   background-color: blueviolet;
   color: #ffffff;
   width: max-content;
@@ -65,8 +65,62 @@ a{
   transition: all 0.5s ease;
   margin-inline: 1rem;
 }
+#dropdown-btn{
+  width: max-content;
+  padding: 0rem;
+  padding-inline: 1rem;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+}
+#dropdown-links{
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.1);
+  height: 12rem;
+  transform: translateY(-1rem);
+  transition: all 0.5s ease;
+  padding: 1.5rem 0rem;
+}
+#dropdown-links a:first-child{
+ margin-bottom: 0.5rem;
+}
+
+#dropdown-btn:hover > #dropdown-links{
+ opacity: 1;
+ pointer-events: all;
+ transform: translateY(0rem);
+}
+
+[data-icon="angle-up"]{
+  font-weight: 900;
+  font-size: 1.6rem;
+  padding: 0;
+  margin: 0;
+  color: #000000;
+  transition: all 0.5s ease;
+}
+#dropdown-btn:hover > [data-icon="angle-up"]{
+  opacity: 1;
+  transform: rotate(180deg);
+ }
+#dropdown-btn p{
+  font-size: 1.6rem;
+  color: #000000;
+  padding: 0;
+  margin: 0;
+  margin-inline: 0.5rem;
+}
 #register-btn:hover,#logout-link-btn:hover{
   background-color: #0808b2;
+
 
 }
 a.active{

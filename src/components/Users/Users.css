@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#users-page{
+    justify-content: flex-start;
+    padding: 4rem;
+}
+
+#add-user-btn{
+    height: 5rem;
+    width: max-content;
+    border-radius: 5rem;
+    margin-bottom: 4rem;
+    background-color: blueviolet;
+    border: 0.1rem solid blueviolet;
+}
+#add-user-btn:hover > button,#add-user-btn:hover{
+    color: blueviolet;
+    background-color: #ffffff;
+    transition: all 0.5s ease;
+}
+#add-user-btn button{
+    color: white;
+    background-color: blueviolet;
+   height: 100%;
+   padding-left: 2rem;
+   padding-right: 1rem;
+   border-radius: 5rem 0 0 5rem;
+}
+#add-user-btn div{
+    background-color: blue;
+    height: 100%;
+    width: 5rem;
+    border-radius: 5rem;
+
+}
+[data-icon="plus"]{
+    color: aliceblue;
+    transform: scale(0.5);
+    height: 100%;
+    padding-inline: 1rem;
+    border-radius: 0 5rem 5rem 0;
+}
+#filter-search{
+    height: 6rem;
+    width: 65%;
+    transition: all 0.5s ease;
+}
+#filter,#search{
+height: 80%;
+}
+
+#search{
+    border: 0rem solid #ff4e6b;
+    width: 4.5rem;
+    border-radius: 5rem;
+    transition: all 0.5s ease;
+}
+
+#filter{
+    width: max-content;
+    display: flex;
+    margin-right: 2rem;
+}
+#filter button{
+    padding-inline: 1.6rem;
+}
+#filter div,#filter p{
+    height: 100%;
+}
+#filter p{
+   color: #ff4e6b;
+    background-color: #ffffff;
+    padding-inline: 2rem;
+    border: 0.1rem solid #ff4e6b;
+    border-radius: 5rem;
+    font-size: 1.6rem;
+}
+#filter div button:first-child{
+    border-radius: 5rem 0 0 5rem;
+
+}
+#filter div button:last-child{
+    border-radius: 0 5rem 5rem 0;
+}
+#filter div button{
+    border: 0.1rem solid #ffffff;
+    height: 100%;
+    background-color: #ff4e6b;
+    color: #ffffff;
+}
+#search form{
+    height: 100%;
+    width: 100%;
+    justify-content: flex-end;
+    transition: all 0.5s ease;
+
+}
+#search input{
+    all: unset;
+    height: 100%;
+    flex: 1;
+    font-size: 1.6rem;
+    padding-inline: 2rem;
+    border-radius: 5rem;
+    color: #ff4e6b;
+    opacity: 1;
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+#search:hover{
+    width: 30rem;
+    border: 0.1rem solid #ff4e6b;
+}
+
+#search button{
+    height: 100%;
+    padding: 0;
+    background-color: #ff4e6b;
+    border-radius: 5rem;
+}
+#filter button:hover{
+    background-color: #f42547;
+}
+[data-icon="magnifying-glass"]{
+    transform: scale(0.5);
+    color: #ffffff;
+    height: 100%;
+    border-radius: 5rem;
+}

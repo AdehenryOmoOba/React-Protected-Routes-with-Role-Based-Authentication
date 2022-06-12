@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../Authorization/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { faCoffee, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
   const navigate = useNavigate();
@@ -44,6 +44,14 @@ function Header() {
             <NavLink to="workers">Workers</NavLink>
           </li>
         </ul>
+      </div>
+      <div id="dropdown-btn">
+        <p>Admin</p>
+        <FontAwesomeIcon icon={faAngleUp} />
+        <div id="dropdown-links">
+          <NavLink to="manage-users">Manage users</NavLink>
+          <NavLink to="manage-blogs">Manage Blogs</NavLink>
+        </div>
       </div>
       {auth !== "loading" && auth && (
         <button onClick={logoutHandler} id="logout-link-btn">

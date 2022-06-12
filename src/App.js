@@ -14,6 +14,8 @@ import AuthProvider from "./Authorization/AuthProvider";
 import RequireAuth from "./RequireAuth/RequireAuth";
 import Unauthorised from "./components/Unauthorised/Unauthorised";
 import Register from "./components/Register/Register";
+import Users from "./components/Users/Users";
+import Blogs from "./components/Blogs/Blogs";
 
 function App() {
   return (
@@ -62,6 +64,8 @@ function App() {
               </RequireAuth>
             }
           />
+          <Route path="/manage-users" element={<Users />} />
+          <Route path="/manage-blogs" element={<Blogs />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/invaliduser" element={<InvalidUser />} />
