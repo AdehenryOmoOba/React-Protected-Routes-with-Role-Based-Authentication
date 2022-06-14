@@ -198,6 +198,7 @@ height: 80%;
 #role-edit-delete div:nth-child(2){
     z-index: 10;
     opacity: 0;
+    pointer-events: none;
     height: 4rem;
     width: 20rem;
 }
@@ -207,6 +208,8 @@ height: 80%;
 #user #right:hover > #role-edit-delete div:nth-child(2){
     top: 70%;
     opacity: 1;
+    pointer-events: all;
+
 }
 #role-edit-delete{
     position: relative;
@@ -260,7 +263,9 @@ height: 80%;
     width: max-content;
     font-size: 1.6rem;
     color: #ff4e6b;
+    pointer-events: none;
 }
+
 #edit-delete #edit,#edit-delete #delete{
     all: unset;
     height: 100%;
