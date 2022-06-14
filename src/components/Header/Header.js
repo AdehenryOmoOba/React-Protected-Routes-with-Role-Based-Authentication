@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../Authorization/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+
+// C:\Users\henry\Desktop\React-Protected-Routes-with-Role-Based-Authentication\public\logo.png
 
 function Header() {
   const navigate = useNavigate();
@@ -18,10 +20,9 @@ function Header() {
   return (
     <header>
       <div className="logo">
-        <NavLink to="/">LOGO</NavLink>
-      </div>
-      <div>
-        <FontAwesomeIcon icon={faCoffee} />
+        <NavLink to="/">
+          <img src="../../../logo.png" />
+        </NavLink>
       </div>
       <div className="navigation">
         <ul>
