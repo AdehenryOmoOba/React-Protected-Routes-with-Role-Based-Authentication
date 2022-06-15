@@ -27,3 +27,17 @@
     row-gap: 0.5rem;
 }
 
+#role{
+  all: unset;
+  width: 28rem;
+  height: 4rem;
+  border-radius: 5rem;
+  border: 0.1rem solid #b8b8ba;
+  background-color: #ffffff;
+  font-size: 2rem;
+  font-weight: 600;
+  align-items: center;
+}
+#role option{
+  text-align: center;
+}

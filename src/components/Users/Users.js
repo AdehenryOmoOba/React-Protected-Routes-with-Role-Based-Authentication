@@ -62,7 +62,8 @@ function Users() {
   };
 
   const handleDelete = () => {
-    alert(`Are you sure you want to delete user ${user} ?`);
+    const answer = confirm(`Are you sure you want to delete user ${user} ?`);
+    if (!answer) return;
   };
 
   const submitEditHandler = (e) => {
@@ -96,7 +97,7 @@ function Users() {
         </div>
         <div id="search" className="flex">
           <form className="flex">
-            <input type="text" placeholder="Search user..." />
+            <input type="text" placeholder="Search user..." required />
             <button className="flex">
               <FontAwesomeIcon icon={faSearch} />
             </button>
@@ -156,12 +157,18 @@ function Users() {
           </div>
           <div className="form-control flex">
             <label htmlFor="role">Role:</label>
-            <input
-              type="text"
-              id="role"
+            <select
               value={editRole}
               onChange={(e) => setEditRole(e.target.value)}
-            />
+              id="role"
+            >
+              <option value="">Select user's role</option>
+              <option value="professor">Professors</option>
+              <option value="hod">HODs</option>
+              <option value="lecturer">Lecturers</option>
+              <option value="student">Students</option>
+              <option value="worker">Workers</option>
+            </select>
           </div>
           <button onClick={submitEditHandler} style={BUTTON_STYLES}>
             Save
@@ -169,7 +176,7 @@ function Users() {
           </button>
         </form>
         <button id="modal-btn" onClick={() => setIsOpen(false)}>
-          Cancel
+          Close
           <FontAwesomeIcon icon={faCancel} />
         </button>
       </Modal>
