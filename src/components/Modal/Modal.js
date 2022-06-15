@@ -1,35 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const MODAL_STYLES = {
   position: "fixed",
+  height: "100vh",
+  width: "100vw",
   inset: "0rem",
   backgroundColor: "rgba(0,0,0,0.7)",
   zIndex: 50,
-  display: "grid",
-  placeItems: "center",
+  display: "flex",
+  flexDirection: "column",
+  rowGap: "4rem",
+  justifyContent: "center",
+  alignItems: "center",
 };
 
-const BUTTON_STYLES = {
-  backgroundColor: "blueViolet",
-  display: "grid",
-  placeItems: "center",
-  padding: "1rem 2rem",
-  color: "#ffffff",
-  borderRadius: "0.5rem",
-  zIndex: 60,
-};
-
-function Modal({ open, closeModal, children }) {
+function Modal({ open, children }) {
   if (!open) return null;
 
-  return (
-    <div style={MODAL_STYLES}>
-      {children}
-      <button style={BUTTON_STYLES} onClick={closeModal}>
-        Modal
-      </button>
-    </div>
-  );
+  return <div style={MODAL_STYLES}>{children}</div>;
 }
 
 export default Modal;

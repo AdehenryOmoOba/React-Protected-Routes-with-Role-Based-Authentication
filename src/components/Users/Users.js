@@ -5,25 +5,26 @@ import {
   faSearch,
   faEdit,
   faTrashCan,
+  faSave,
+  faCancel,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Users.css";
-import Modal from "../Modal/Modal";
+import "../Modal/Modal.css";
 
-const FORM_STYLES = {
-  height: "50%",
-  width: "50%",
-  backgroundColor: "yellow",
-  flexDirection: "column",
-};
+import Modal from "../Modal/Modal";
 
 const BUTTON_STYLES = {
   backgroundColor: "blueViolet",
-  display: "grid",
-  placeItems: "center",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  columnGap: "1rem",
   padding: "1rem 2rem",
   color: "#ffffff",
   borderRadius: "0.5rem",
   zIndex: 60,
+  marginTop: "2rem",
+  width: "max-content",
 };
 
 function Users() {
@@ -39,16 +40,18 @@ function Users() {
         "data-username"
       );
 
+    if (!usernameClicked) return;
+
     const username = document.querySelector(
-      `[data-username="${usernameClicked}"] #left p:nth-child(1) span:nth-child(2)`
+      `[data-username="${usernameClicked}"] .left p:nth-child(1) span:nth-child(2)`
     ).textContent;
 
     const telephone = document.querySelector(
-      `[data-username="${usernameClicked}"] #left p:nth-child(2) span:nth-child(2)`
+      `[data-username="${usernameClicked}"] .left p:nth-child(2) span:nth-child(2)`
     ).textContent;
 
     const role = document.querySelector(
-      `[data-username="${usernameClicked}"] #right #role-div p`
+      `[data-username="${usernameClicked}"] .right .role-div p`
     ).textContent;
 
     setUser(usernameClicked);
@@ -56,6 +59,10 @@ function Users() {
     setEditTelephone(telephone);
     setEditRole(role);
     setIsOpen(true);
+  };
+
+  const handleDelete = () => {
+    alert(`Are you sure you want to delete user ${user} ?`);
   };
 
   const submitEditHandler = (e) => {
@@ -97,8 +104,8 @@ function Users() {
         </div>
       </div>
       <div id="users-container" className="flex">
-        <div id="user" data-username="adehenry">
-          <div id="left">
+        <div className="user" data-username="adehenry">
+          <div className="left">
             <p>
               <span>Username </span>
               <span className="user-info">adehenry</span> {/* USERNAME */}
@@ -108,46 +115,17 @@ function Users() {
               <span className="user-info">08030821679</span> {/* TELEPHONE */}
             </p>
           </div>
-          <div id="right" className="flex">
-            <div id="role-edit-delete" className="flex">
-              <div className="flex" id="role-div">
-                <p id="role">Professor</p> {/* ROLE */}
+          <div className="right flex">
+            <div className="role-edit-delete flex">
+              <div className="role-div flex">
+                <p className="role">Professor</p> {/* ROLE */}
               </div>
-              <div className="flex" id="edit-delete">
-                <div id="edit" className="flex" onClick={handleEdit}>
+              <div className="edit-delete flex">
+                <div className="edit flex" onClick={handleEdit}>
                   <p>Edit</p>
                   <FontAwesomeIcon icon={faEdit} />
                 </div>
-                <div id="delete" className="flex">
-                  <p>Delete</p>
-                  <FontAwesomeIcon icon={faTrashCan} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="user" data-username="kiddo">
-          <div id="left">
-            <p>
-              <span>Username </span>
-              <span className="user-info">kiddo</span> {/* USERNAME */}
-            </p>
-            <p>
-              <span>Telephone </span>
-              <span className="user-info">08060902211</span> {/* TELEPHONE */}
-            </p>
-          </div>
-          <div id="right" className="flex">
-            <div id="role-edit-delete" className="flex">
-              <div className="flex" id="role-div">
-                <p id="role">Doctor</p> {/* ROLE */}
-              </div>
-              <div className="flex" id="edit-delete">
-                <div id="edit" className="flex" onClick={handleEdit}>
-                  <p>Edit</p>
-                  <FontAwesomeIcon icon={faEdit} />
-                </div>
-                <div id="delete" className="flex">
+                <div className="delete flex" onClick={handleDelete}>
                   <p>Delete</p>
                   <FontAwesomeIcon icon={faTrashCan} />
                 </div>
@@ -156,9 +134,9 @@ function Users() {
           </div>
         </div>
       </div>
-      <Modal open={isOpen} closeModal={() => setIsOpen(false)}>
-        <form style={FORM_STYLES} className="flex">
-          <div>
+      <Modal open={isOpen}>
+        <form id="content" className="flex">
+          <div className="form-control flex">
             <label htmlFor="username">Username:</label>
             <input
               type="text"
@@ -167,7 +145,7 @@ function Users() {
               onChange={(e) => setEditUsername(e.target.value)}
             />
           </div>
-          <div>
+          <div className="form-control flex">
             <label htmlFor="telephone">Telephone:</label>
             <input
               type="text"
@@ -176,7 +154,7 @@ function Users() {
               onChange={(e) => setEditTelephone(e.target.value)}
             />
           </div>
-          <div>
+          <div className="form-control flex">
             <label htmlFor="role">Role:</label>
             <input
               type="text"
@@ -186,9 +164,14 @@ function Users() {
             />
           </div>
           <button onClick={submitEditHandler} style={BUTTON_STYLES}>
-            Submit
+            Save
+            <FontAwesomeIcon icon={faSave} />
           </button>
         </form>
+        <button id="modal-btn" onClick={() => setIsOpen(false)}>
+          Cancel
+          <FontAwesomeIcon icon={faCancel} />
+        </button>
       </Modal>
     </main>
   );

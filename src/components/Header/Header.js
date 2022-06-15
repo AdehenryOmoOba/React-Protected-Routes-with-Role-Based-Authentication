@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
-// C:\Users\henry\Desktop\React-Protected-Routes-with-Role-Based-Authentication\public\logo.png
-
 function Header() {
   const navigate = useNavigate();
   const { logout, auth } = useAuthContext();
