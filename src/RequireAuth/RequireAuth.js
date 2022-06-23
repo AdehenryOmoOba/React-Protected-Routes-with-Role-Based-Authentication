@@ -4,24 +4,30 @@ import { useLocation, Navigate } from "react-router-dom";
 
 function RequireAuth({ children }) {
   const location = useLocation();
-  const { auth, roles } = useAuthContext();
-  const pathName = location.pathname.split("/")[1];
+  const { auth, role, setError, setPath } = useAuthContext();
+
+  let pathName = location.pathname.split("/")[1];
+
   const pathCodes = {
-    professors: 111,
-    hods: 222,
-    lecturers: 333,
-    students: 444,
-    workers: 555,
+    professors: ["professors"],
+    hods: ["professors", "hods"],
+    lecturers: ["professors", "hods", "lecturers"],
+    students: ["professors", "hods", "lecturers", "students"],
+    workers: ["professors", "hods", "lecturers", "students", "workers"],
   };
 
   if (auth === null) {
     return <Navigate to="/login" state={{ path: location.pathname }} replace />;
   }
 
-  if (auth && roles.includes(pathCodes[pathName])) {
-    return children;
-  } else {
+  if (!pathCodes[pathName].includes(role)) {
+    setError(`You are unauthorised to view this page`);
     return <Navigate to="/unauthorised" replace />;
+  }
+
+  if (auth) {
+    setPath("");
+    return children;
   }
 }
 

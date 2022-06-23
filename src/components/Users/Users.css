@@ -1,300 +1,301 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.flex{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#users-page{
-    justify-content: flex-start;
-    padding: 4rem;
-}
-
-#add-user-btn{
-    height: 5rem;
-    width: max-content;
-    border-radius: 5rem;
-    margin-bottom: 4rem;
-    background-color: blueviolet;
-    border: 0.1rem solid blueviolet;
-}
-#add-user-btn:hover > button,#add-user-btn:hover{
-    color: blueviolet;
-    background-color: #ffffff;
-    transition: all 0.5s ease;
-}
-#add-user-btn button{
-    color: white;
-    background-color: blueviolet;
-   height: 100%;
-   padding-left: 2rem;
-   padding-right: 1rem;
-   border-radius: 5rem 0 0 5rem;
-}
-#add-user-btn div{
-    background-color: blue;
-    height: 100%;
-    width: 5rem;
-    border-radius: 5rem;
-
-}
-[data-icon="plus"]{
-    color: aliceblue;
-    transform: scale(0.5);
-    height: 100%;
-    padding-inline: 1rem;
-    border-radius: 0 5rem 5rem 0;
-}
-#filter-search{
-    height: 6rem;
-    width: 65%;
-    transition: all 0.5s ease;
-    margin-bottom: 4rem;
-}
-#filter,#search{
-height: 80%;
+#users-page {
+  justify-content: flex-start;
+  padding: 4rem;
+  padding-bottom: 10rem;
+ height: max-content;
 }
 
-#search{
-    border: 0rem solid #ff4e6b;
-    width: 4.5rem;
-    border-radius: 5rem;
-    transition: all 0.5s ease;
+#add-user-btn {
+  height: 5rem;
+  width: max-content;
+  border-radius: 5rem;
+  margin-bottom: 4rem;
+  background-color: blueviolet;
+  border: 0.1rem solid blueviolet;
+}
+#add-user-btn:hover > button,
+#add-user-btn:hover {
+  color: blueviolet;
+  background-color: #ffffff;
+  transition: all 0.5s ease;
+}
+#add-user-btn button {
+  color: white;
+  background-color: blueviolet;
+  height: 100%;
+  padding-left: 2rem;
+  padding-right: 1rem;
+  border-radius: 5rem 0 0 5rem;
+}
+#add-user-btn div {
+  background-color: blue;
+  height: 100%;
+  width: 5rem;
+  border-radius: 5rem;
+}
+[data-icon="plus"] {
+  color: aliceblue;
+  transform: scale(0.5);
+  height: 100%;
+  padding-inline: 1rem;
+  border-radius: 0 5rem 5rem 0;
+}
+#filter-search {
+  height: 6rem;
+  width: 65%;
+  transition: all 0.5s ease;
+  margin-bottom: 4rem;
+}
+#filter,
+#search {
+  height: 80%;
 }
 
-#filter{
-    width: max-content;
-    display: flex;
-    margin-right: 2rem;
-}
-#filter button{
-    padding-inline: 1.6rem;
-}
-#filter div,#filter p{
-    height: 100%;
-}
-#filter p{
-   color: #ff4e6b;
-    background-color: #ffffff;
-    padding-inline: 2rem;
-    border: 0.1rem solid #ff4e6b;
-    border-radius: 5rem;
-    font-size: 1.6rem;
-}
-#filter div button:first-child{
-    border-radius: 5rem 0 0 5rem;
-
-}
-#filter div button:last-child{
-    border-radius: 0 5rem 5rem 0;
-}
-#filter div button{
-    border: 0.1rem solid #ffffff;
-    height: 100%;
-    background-color: #ff4e6b;
-    color: #ffffff;
-}
-#search form{
-    height: 100%;
-    width: 100%;
-    justify-content: flex-end;
-    transition: all 0.5s ease;
-}
-#search input{
-    all: unset;
-    height: 100%;
-    flex: 1;
-    font-size: 1.6rem;
-    padding-inline: 2rem;
-    border-radius: 5rem;
-    color: #ff4e6b;
-    opacity: 1;
-    transition: all 0.5s ease;
-    overflow: hidden;
-   
-}
-#search:hover{
-    width: 30rem;
-    border: 0.1rem solid #ff4e6b;
+#search {
+  border: 0rem solid #ff4e6b;
+  width: 4.5rem;
+  border-radius: 5rem;
+  transition: all 0.5s ease;
 }
 
-#search button{
-    height: 100%;
-    padding: 0;
-    background-color: #ff4e6b;
-    border-radius: 5rem;
+#filter {
+  width: max-content;
+  display: flex;
+  margin-right: 2rem;
 }
-#filter button:hover{
-    background-color: #f42547;
+#filter button {
+  padding-inline: 1.6rem;
 }
-[data-icon="magnifying-glass"]{
-    transform: scale(0.5);
-    color: #ffffff;
-    height: 100%;
-    border-radius: 5rem;
+#filter div,
+#filter p {
+  height: 100%;
 }
-#users-container{
-    height: max-content;
-    width: 60%;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1rem;
-    transition: all 0.5s ease;
+#filter p {
+  color: #ff4e6b;
+  background-color: #ffffff;
+  padding-inline: 2rem;
+  border: 0.1rem solid #ff4e6b;
+  border-radius: 5rem;
+  font-size: 1.6rem;
 }
-#users-container .user{
-    height: 11rem;
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 1rem;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    cursor: pointer;
-    display: flex;
+#filter div button:first-child {
+  border-radius: 5rem 0 0 5rem;
 }
-.user:hover > .left::after{
-    background-color: #29af29;
+#filter div button:last-child {
+  border-radius: 0 5rem 5rem 0;
 }
-
-#users-container .user:not(:last-child){
-    margin-bottom: 1rem;
+#filter div button {
+  border: 0.1rem solid #ffffff;
+  height: 100%;
+  background-color: #ff4e6b;
+  color: #ffffff;
 }
-.user .left, .user .right{
-    height: 100%;
-    width: 50%;
+#search form {
+  height: 100%;
+  width: 100%;
+  justify-content: flex-end;
+  transition: all 0.5s ease;
 }
-.user .left{
-    position: relative;
-    border-radius: 1rem 0 0 1rem ;
-    padding-inline: 2rem;
+#search input {
+  all: unset;
+  height: 100%;
+  flex: 1;
+  font-size: 1.6rem;
+  padding-inline: 2rem;
+  border-radius: 5rem;
+  color: #ff4e6b;
+  opacity: 1;
+  transition: all 0.5s ease;
+  overflow: hidden;
 }
-.user .left::after{
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 1rem;
-    inset: 0 auto 0 0;
-    background-color: #9af69a;
-    border-radius: 1rem 0 0 1rem;
-    transition: all 0.2s ease;
-
+#search:hover {
+  width: 30rem;
+  border: 0.1rem solid #ff4e6b;
 }
 
-.user .left span{
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: #f42547;
-
+#search button {
+  height: 100%;
+  padding: 0;
+  background-color: #ff4e6b;
+  border-radius: 5rem;
+}
+#filter button:hover {
+  background-color: #f42547;
+}
+[data-icon="magnifying-glass"] {
+  transform: scale(0.5);
+  color: #ffffff;
+  height: 100%;
+  border-radius: 5rem;
+}
+#users-container {
+  height: max-content;
+  width: 60%;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  transition: all 0.5s ease;
+}
+#users-container .user {
+  height: 11rem;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  cursor: pointer;
+  display: flex;
+}
+.user:hover > .left::after {
+  background-color: #29af29;
 }
 
-.user .left p .user-info{
-    font-weight: normal;
-    background: transparent;
-    width: max-content;
-    padding: 0.5rem 1rem;
-    border-radius: 5rem;
+#users-container .user:not(:last-child) {
+  margin-bottom: 1rem;
 }
-.user .right{
-    border-radius: 0 1rem 1rem 0 ;
-    justify-content: flex-end;
-    padding-inline: 3rem;
+.user .left,
+.user .right {
+  height: 100%;
+  width: 50%;
 }
-.role-edit-delete div:first-child{
-    z-index: 10;
+.user .left {
+  position: relative;
+  border-radius: 1rem 0 0 1rem;
+  padding-inline: 2rem;
 }
-.role-edit-delete div:nth-child(2){
-    z-index: 10;
-    opacity: 0;
-    pointer-events: none;
-    height: 4rem;
-    width: 20rem;
-}
-.user:hover > .right > .role-edit-delete div:first-child{
-    top: 30%;
-}
-.user:hover > .right > .role-edit-delete div:nth-child(2){
-    top: 70%;
-    opacity: 1;
-    pointer-events: all;
-
-}
-.role-edit-delete{
-    position: relative;
-    height: 90%;
-    width: 20rem;
-    flex-direction: column;
-    justify-content: space-evenly;
+.user .left::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 1rem;
+  inset: 0 auto 0 0;
+  background-color: #9af69a;
+  border-radius: 1rem 0 0 1rem;
+  transition: all 0.2s ease;
 }
 
-.role-edit-delete div{
-    position: absolute;
-    height: 3.5rem;
-    width: max-content;
-    padding: 0;
-    border-radius: 0.5rem;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    transition: all 0.2s ease;
-}
-.role-edit-delete .role-div{
-    background-color: blueviolet;
-}
-.role-edit-delete .role{
-    color: #ffffff;
-    font-size: 1.6rem;
-
-}
-.role-edit-delete .role::after{
-    position: absolute;
-    content: "";
-    height: 1rem;
-    width: 1rem;
-    background-color: #9af69a;
-    inset: -0.6rem -0.6rem auto auto;
-    border: 0.3rem solid #ffffff;
-    border-radius: 2rem;
+.user .left span {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #f42547;
 }
 
-.role-edit-delete .edit-delete .edit,.role-edit-delete .edit-delete .delete{
-    background-color: transparent;
-    border: 0.1rem solid #dad9d9;
-    margin-inline: 0.1rem;
-    padding-inline: 1rem;
-    height: 3.5rem;
-    border-radius: 0.5rem;
-    width: max-content;
+.user .left p .user-info {
+  font-weight: normal;
+  background: transparent;
+  width: max-content;
+  padding: 0.5rem 1rem;
+  border-radius: 5rem;
 }
-.edit-delete p{
-    padding: 0;
-    width: max-content;
-    font-size: 1.6rem;
-    color: #ff4e6b;
-    pointer-events: none;
+.user .right {
+  border-radius: 0 1rem 1rem 0;
+  justify-content: flex-end;
+  padding-inline: 3rem;
+}
+.role-edit-delete div:first-child {
+  z-index: 10;
+}
+.role-edit-delete div:nth-child(2) {
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  height: 4rem;
+  width: 20rem;
+}
+.user:hover > .right > .role-edit-delete div:first-child {
+  top: 30%;
+}
+.user:hover > .right > .role-edit-delete div:nth-child(2) {
+  top: 70%;
+  opacity: 1;
+  pointer-events: all;
+}
+.role-edit-delete {
+  position: relative;
+  height: 90%;
+  width: 20rem;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
-.edit-delete .edit,.edit-delete .delete{
-    all: unset;
-    height: 100%;
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.role-edit-delete div {
+  position: absolute;
+  height: 3.5rem;
+  width: max-content;
+  padding: 0;
+  border-radius: 0.5rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease;
 }
-[data-icon="pen-to-square"]{
-    color: blueviolet;
-    background-color: #ead7f9;
-    padding: 0.7rem;
-    border-radius: 5rem;
-    display: grid;
-    place-content: center;
+.role-edit-delete .role-div {
+  background-color: blueviolet;
 }
-[data-icon="trash-can"]{
-    color: red;
-    background-color: #ffbebe;
-    padding: 0.7rem;
-    border-radius: 5rem;
-    display: grid;
-    place-content: center;
+.role-edit-delete .role {
+  color: #ffffff;
+  font-size: 1.6rem;
+}
+.role-edit-delete .role::after {
+  position: absolute;
+  content: "";
+  height: 1rem;
+  width: 1rem;
+  background-color: #9af69a;
+  inset: -0.6rem -0.6rem auto auto;
+  border: 0.3rem solid #ffffff;
+  border-radius: 2rem;
+}
+
+.role-edit-delete .edit-delete .edit,
+.role-edit-delete .edit-delete .delete {
+  background-color: transparent;
+  border: 0.1rem solid #dad9d9;
+  margin-inline: 0.1rem;
+  padding-inline: 1rem;
+  height: 3.5rem;
+  border-radius: 0.5rem;
+  width: max-content;
+}
+.edit-delete p {
+  padding: 0;
+  width: max-content;
+  font-size: 1.6rem;
+  color: #ff4e6b;
+  pointer-events: none;
+}
+
+.edit-delete .edit,
+.edit-delete .delete {
+  all: unset;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+[data-icon="pen-to-square"] {
+  color: blueviolet;
+  background-color: #ead7f9;
+  padding: 0.7rem;
+  border-radius: 5rem;
+  display: grid;
+  place-content: center;
+}
+[data-icon="trash-can"] {
+  color: red;
+  background-color: #ffbebe;
+  padding: 0.7rem;
+  border-radius: 5rem;
+  display: grid;
+  place-content: center;
 }

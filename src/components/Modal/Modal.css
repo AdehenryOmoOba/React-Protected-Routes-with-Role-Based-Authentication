@@ -1,4 +1,4 @@
-  #content{
+  #content,#loading{
     background-color: #fef9f9;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     height: 60vh;
@@ -6,6 +6,10 @@
     flex-direction: column;
     row-gap: 1rem;
     border-radius: 1rem;
+    animation: spring 0.5s ease;
+  }
+  #loading{
+    animation:none;
   }
 
   #modal-btn{
@@ -40,4 +44,16 @@
 }
 #role option{
   text-align: center;
+}
+
+@keyframes spring {
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.05);
+  }
+  100%{
+    transform: scale(1);
+  }
 }

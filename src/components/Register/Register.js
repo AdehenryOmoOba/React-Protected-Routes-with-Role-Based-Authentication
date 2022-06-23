@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { gql, useMutation } from "@apollo/client";
+import Spinner from "../Spinner/Spinner";
 import "./Register.css";
 
 const REGISTER = gql`
@@ -57,7 +58,11 @@ function Register() {
   }
 
   if (loading) {
-    return <main style={{ fontSize: "2rem" }}>Loading...</main>;
+    return (
+      <main>
+        <Spinner />
+      </main>
+    );
   } else {
     return (
       <main>

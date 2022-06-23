@@ -3,13 +3,14 @@ import { useAuthContext } from "..//../Authorization/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useLazyQuery, gql } from "@apollo/client";
+import Spinner from "../Spinner/Spinner";
 
 const LOGIN = gql`
   query userLogin($username: String!, $password: String!) {
     login(username: $username, password: $password) {
       success
       error
-      roles
+      role
       username
     }
   }
@@ -24,23 +25,48 @@ function Login() {
     variables: { username, password },
   });
 
-  const { login, setError, setRoles } = useAuthContext();
+  const { login, setError, setRole, path, setPath } = useAuthContext();
   const navigate = useNavigate();
   useEffect(() => {
     usernameRef.current.focus();
   }, []);
-  const redirect = location.state?.path || "/";
+  let redirect = location.state ? location.state.path : "/";
+
+  const pathCodes = {
+    professors: ["professors"],
+    hods: ["professors", "hods"],
+    lecturers: ["professors", "hods", "lecturers"],
+    students: ["professors", "hods", "lecturers", "students"],
+    workers: ["professors", "hods", "lecturers", "students", "workers"],
+  };
 
   function loginHandler() {
+    let pathName = location.state?.path.split("/")[1];
+
+    if (!path) setPath(pathName);
+
     loginUser()
       .then((result) => {
         if (result.error) {
           throw Error(`Connection error: ${result.error.message}`);
         }
 
+        if (result.data.login.error) {
+          throw Error(result.data.login.error);
+        }
+
+        if (!location.state) pathName = path;
+
+        if (
+          pathName &&
+          !pathCodes[pathName]?.includes(result.data.login.role)
+        ) {
+          throw Error(`You are unauthorised to view this page`);
+        }
+
         if (result.data.login.success) {
           login(result.data.login.username);
-          setRoles(result.data.login.roles);
+          setRole(result.data.login.role);
           navigate(redirect, { replace: true });
         }
 
@@ -56,7 +82,11 @@ function Login() {
   }
 
   if (loading) {
-    return <main style={{ fontSize: "2rem" }}>Loading...</main>;
+    return (
+      <main>
+        <Spinner />
+      </main>
+    );
   } else {
     return (
       <main>

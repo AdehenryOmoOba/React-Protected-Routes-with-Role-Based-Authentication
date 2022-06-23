@@ -5,7 +5,8 @@ const usersContext = createContext(null);
 function AuthProvider({ children }) {
   const [auth, setAuth] = useState(null);
   const [error, setError] = useState("");
-  const [roles, setRoles] = useState([]);
+  const [role, setRole] = useState("");
+  const [path, setPath] = useState("");
 
   const login = (userInfo) => {
     setAuth(userInfo);
@@ -17,7 +18,17 @@ function AuthProvider({ children }) {
 
   return (
     <usersContext.Provider
-      value={{ auth, login, logout, error, setError, roles, setRoles }}
+      value={{
+        auth,
+        login,
+        logout,
+        error,
+        setError,
+        role,
+        setRole,
+        path,
+        setPath,
+      }}
     >
       {children}
     </usersContext.Provider>

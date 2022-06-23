@@ -5,34 +5,43 @@ import {
   faSearch,
   faEdit,
   faTrashCan,
-  faSave,
-  faCancel,
+  faAward,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Users.css";
 import "../Modal/Modal.css";
-
 import Modal from "../Modal/Modal";
+import useAllUsers from "../../apolloServer/dataRequestHooks/GetAllUsers";
+import Spinner from "../Spinner/Spinner";
+import NewUserModal from "../NewUserModal/NewUserModal";
+import { gql, useMutation } from "@apollo/client";
+// import useDeleteUser from "../../apolloServer/dataRequestHooks/DeleteUser";
 
-const BUTTON_STYLES = {
-  backgroundColor: "blueViolet",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  columnGap: "1rem",
-  padding: "1rem 2rem",
-  color: "#ffffff",
-  borderRadius: "0.5rem",
-  zIndex: 60,
-  marginTop: "2rem",
+const DELETE_USER = gql`
+  mutation findAndDelete($username: String) {
+    deleteUser(username: $username) {
+      response
+    }
+  }
+`;
+
+const ALERT_STYLES = {
   width: "max-content",
+  backgroundColor: "#29af29",
+  color: "white",
+  padding: "0.5rem 2rem",
+  borderRadius: "5rem",
 };
 
 function Users() {
-  const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState("");
+  const { loading, error, data, refetch } = useAllUsers();
+  const [isOpen, setIsOpen] = useState(false);
+  const [newUserOpen, setNewUserOpen] = useState(false);
   const [editUsername, setEditUsername] = useState("");
   const [editTelephone, setEditTelephone] = useState("");
   const [editRole, setEditRole] = useState("");
+  const [deleteResponse, setDeleteResponse] = useState("");
+  const [findAndDelete] = useMutation(DELETE_USER);
 
   const handleEdit = (e) => {
     const usernameClicked =
@@ -61,25 +70,50 @@ function Users() {
     setIsOpen(true);
   };
 
-  const handleDelete = () => {
-    const answer = confirm(`Are you sure you want to delete user ${user} ?`);
+  const handleDelete = async (e) => {
+    const usernameClicked =
+      e.target.parentNode.parentNode.parentNode.parentNode.getAttribute(
+        "data-username"
+      );
+
+    if (!usernameClicked) return;
+
+    const answer = confirm(
+      `Are you sure you want to delete ${usernameClicked} ?`
+    );
     if (!answer) return;
+
+    try {
+      const deleteResponse = await findAndDelete({
+        variables: {
+          username: usernameClicked,
+        },
+      });
+
+      const {
+        data: {
+          deleteUser: { response },
+        },
+      } = deleteResponse;
+      refetch();
+      setDeleteResponse(response);
+      alert(response);
+      setTimeout(() => {
+        setDeleteResponse("");
+      }, 3000);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const submitEditHandler = (e) => {
-    e.preventDefault();
-    console.log({
-      user,
-      username: editUsername,
-      phone: editTelephone,
-      role: editRole,
-    });
+  const handleCreateUser = () => {
+    setNewUserOpen(true);
   };
 
   return (
     <main id="users-page">
       <div id="add-user-btn" className="flex">
-        <button>Create user</button>
+        <button onClick={handleCreateUser}>Create user</button>
         <div className="flex">
           <FontAwesomeIcon icon={faPlus} />
         </div>
@@ -104,82 +138,61 @@ function Users() {
           </form>
         </div>
       </div>
+      {deleteResponse && <p style={ALERT_STYLES}>{deleteResponse}</p>}
       <div id="users-container" className="flex">
-        <div className="user" data-username="adehenry">
-          <div className="left">
-            <p>
-              <span>Username </span>
-              <span className="user-info">adehenry</span> {/* USERNAME */}
-            </p>
-            <p>
-              <span>Telephone </span>
-              <span className="user-info">08030821679</span> {/* TELEPHONE */}
-            </p>
-          </div>
-          <div className="right flex">
-            <div className="role-edit-delete flex">
-              <div className="role-div flex">
-                <p className="role">Professor</p> {/* ROLE */}
+        {loading && <Spinner />}
+        {data?.allUsers.map((user, index) => {
+          return (
+            <div className="user" data-username={user.username} key={index}>
+              <div className="left">
+                <p>
+                  <span>Username </span>
+                  <span className="user-info">{user.username}</span>
+                </p>
+                <p>
+                  <span>Telephone </span>
+                  <span className="user-info">{user.phone}</span>
+                </p>
               </div>
-              <div className="edit-delete flex">
-                <div className="edit flex" onClick={handleEdit}>
-                  <p>Edit</p>
-                  <FontAwesomeIcon icon={faEdit} />
-                </div>
-                <div className="delete flex" onClick={handleDelete}>
-                  <p>Delete</p>
-                  <FontAwesomeIcon icon={faTrashCan} />
+              <div className="right flex">
+                <div className="role-edit-delete flex">
+                  <div className="role-div flex">
+                    <p className="role">{user.role}</p>
+                  </div>
+                  <div className="edit-delete flex">
+                    <div className="edit flex" onClick={handleEdit}>
+                      <p>Edit</p>
+                      <FontAwesomeIcon icon={faEdit} />
+                    </div>
+                    <div
+                      className="delete flex"
+                      onClick={(e) => handleDelete(e)}
+                    >
+                      <p>Delete</p>
+                      <FontAwesomeIcon icon={faTrashCan} />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
-      <Modal open={isOpen}>
-        <form id="content" className="flex">
-          <div className="form-control flex">
-            <label htmlFor="username">Username:</label>
-            <input
-              type="text"
-              id="username"
-              value={editUsername}
-              onChange={(e) => setEditUsername(e.target.value)}
-            />
-          </div>
-          <div className="form-control flex">
-            <label htmlFor="telephone">Telephone:</label>
-            <input
-              type="text"
-              id="telephone"
-              value={editTelephone}
-              onChange={(e) => setEditTelephone(e.target.value)}
-            />
-          </div>
-          <div className="form-control flex">
-            <label htmlFor="role">Role:</label>
-            <select
-              value={editRole}
-              onChange={(e) => setEditRole(e.target.value)}
-              id="role"
-            >
-              <option value="">Select user's role</option>
-              <option value="professor">Professors</option>
-              <option value="hod">HODs</option>
-              <option value="lecturer">Lecturers</option>
-              <option value="student">Students</option>
-              <option value="worker">Workers</option>
-            </select>
-          </div>
-          <button onClick={submitEditHandler} style={BUTTON_STYLES}>
-            Save
-            <FontAwesomeIcon icon={faSave} />
-          </button>
-        </form>
-        <button id="modal-btn" onClick={() => setIsOpen(false)}>
-          Close
-          <FontAwesomeIcon icon={faCancel} />
-        </button>
-      </Modal>
+
+      <Modal
+        close={setIsOpen}
+        user={user}
+        username={editUsername}
+        phone={editTelephone}
+        role={editRole}
+        open={isOpen}
+        refreshData={refetch}
+      />
+      <NewUserModal
+        open={newUserOpen}
+        close={setNewUserOpen}
+        refreshData={refetch}
+      />
     </main>
   );
 }
