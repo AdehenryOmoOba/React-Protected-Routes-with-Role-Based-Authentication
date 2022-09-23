@@ -16,7 +16,7 @@ function Header() {
   return (
     <header>
       <div className="logo">
-        <NavLink to="/">LOGO</NavLink>
+        <NavLink to="/">ADEHENRY.</NavLink>
       </div>
       <div className="navigation">
         <ul>
@@ -27,22 +27,19 @@ function Header() {
             <NavLink to="professors">Professors</NavLink>
           </li>
           <li>
-            <NavLink to="hods">HODs</NavLink>
-          </li>
-          <li>
-            <NavLink to="lecturers">Lecturers</NavLink>
-          </li>
-          <li>
             <NavLink to="students">Students</NavLink>
           </li>
-          <li>
-            <NavLink to="workers">Workers</NavLink>
-          </li>
         </ul>
+       {!auth && <button onClick={() => navigate("/login")} id="login-link-btn">
+          Login
+        </button>}
+      { !auth && <button onClick={() => navigate("/register")} id="register-btn">
+          Register
+        </button>}
       </div>
-      {auth !== "loading" && auth && (
-        <button onClick={logoutHandler}>Logout</button>
-      )}
+      {auth && 
+        <button onClick={logoutHandler}  id="logout-link-btn">Logout</button>
+      }
     </header>
   );
 }

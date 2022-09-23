@@ -24,12 +24,27 @@ header{
   height: 7rem;
   box-shadow: 0rem 1rem 3rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-
+#register-btn,#login-link-btn,#logout-link-btn{
+  background-color: #241333;
+  color: #ffffff;
+  width: max-content;
+  height: max-content;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5rem;
+  transition: all 0.5s ease;
+  margin-inline: 1rem;
+  border: 0.1rem solid #000000;
+}
+#login-link-btn{
+  background-color: #ffffff;
+  color: #241333;
+  border: 0.1rem solid #000000;
+}
 .navigation{
   flex: 1;
   display: flex;
   justify-content: flex-end;
-
+  align-items: center;
 }
 ul{
   display: flex;
@@ -101,18 +116,18 @@ button{
   font-weight: 600;
   border: none;
   padding-inline: 3rem;
-  color: blueviolet;
+  color: #241333;
 }
 #login-btn{
-  background-color: blueviolet;
-  border: 0.1rem solid blueviolet;
+  background-color: #241333;
+  border: 0.1rem solid #241333;
   padding: 1rem 3rem;
   border-radius: 5rem;
   color: #ffffff;
 }
 #login-btn:active{
   background: transparent;
-  color: blueviolet;
+  color: #241333;
 }
 .btnDiv{
   width: 100%;

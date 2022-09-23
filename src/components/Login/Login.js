@@ -2,58 +2,65 @@ import React, { useState, useRef, useEffect } from "react";
 import { useAuthContext } from "..//../Authorization/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
+import {useMutation} from 'react-query'
+import { axiosBase } from "../../Axios/axiosBase";
+import Loading from '../Loading/Loading'
+
+const login = async (loginData) => {
+  const loginURL = `/login`;
+  const response = await axiosBase.post(loginURL, loginData)
+  return response.data
+}
 
 function Login() {
   const usernameRef = useRef();
   const location = useLocation();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const { login, setError, setRoles } = useAuthContext();
+  const [loginInfo, setLoginInfo] = useState({username:"", password:""});
   const navigate = useNavigate();
+  const {auth, setAuth} = useAuthContext()
+  const {mutate,isLoading} = useMutation(login,{
+    onSuccess: (response) => {
+      console.log(response)
+      setAuth(response)
+      navigate('/')
+
+    },
+    onError: (error) => console.log(error.response.data.error)
+  })
   useEffect(() => {
     usernameRef.current.focus();
   }, []);
+
   const redirect = location.state?.path || "/";
 
   const loginHandler = () => {
-    const userData = { username, password };
-    console.log(userData);
-    navigate("/loading");
-    const usersURL = `http://localhost:5000/login`;
-    axios
-      .post(usersURL, userData)
-      .then((response) => {
-        console.log(response);
-        if (response.data.username) {
-          console.log(response.data.username);
-          login(response.data.username);
-          setRoles(response.data.roles);
-          navigate(redirect, { replace: true });
-          return;
-        } else {
-          throw Error(response.data.error);
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
-        setError(error.message);
-        login(null);
-        navigate("/invaliduser");
-      });
+    const { username, password } = loginInfo
+    const loginData = {username,password}
+    console.log(loginData);
+    mutate(loginData)
+   
   };
+
+  const handleChange = (e) =>{
+    setLoginInfo((previous) => {
+        return {...previous, [e.target.name]: e.target.value}
+    } )
+  }
 
   return (
     <main>
-      <p>Please login with your credentials!</p>
+      {isLoading ? <Loading />
+       : <>
+      <p>Login</p>
       <div className="formControl">
         <label htmlFor="username">Username</label>
         <input
           type="text"
           id="username"
-          value={username}
+          name="username"
+          value={loginInfo.username}
           ref={usernameRef}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={handleChange}
         />
       </div>
       <div className="formControl">
@@ -61,8 +68,9 @@ function Login() {
         <input
           type="password"
           id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          name="password"
+          value={loginInfo.password}
+          onChange={handleChange}
         />
       </div>
       <div className="btnDiv">
@@ -70,6 +78,7 @@ function Login() {
           Login
         </button>
       </div>
+      </>}
     </main>
   );
 }
