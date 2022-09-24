@@ -20,10 +20,8 @@ function Login() {
   const {auth, setAuth} = useAuthContext()
   const {mutate,isLoading} = useMutation(login,{
     onSuccess: (response) => {
-      console.log(response)
       setAuth(response)
       navigate('/')
-
     },
     onError: (error) => console.log(error.response.data.error)
   })
@@ -36,7 +34,6 @@ function Login() {
   const loginHandler = () => {
     const { username, password } = loginInfo
     const loginData = {username,password}
-    console.log(loginData);
     mutate(loginData)
    
   };

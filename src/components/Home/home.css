@@ -1,0 +1,23 @@
+#message{
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    min-height: 15rem;
+}
+#top button{
+    background-color: #0d071d;
+    color: aliceblue;
+    font-size: 2rem;
+    margin-inline: 0.5rem;
+    padding: 1rem 2rem;
+}
+#top button:last-child{
+    background-color: #dd166f;
+}
+#bottom{
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 2rem;
+}
+span{
+    font-weight: bolder;
+}
