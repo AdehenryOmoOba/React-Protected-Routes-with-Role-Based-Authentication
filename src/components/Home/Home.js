@@ -5,12 +5,6 @@ import {useQuery} from 'react-query'
 import { axiosBase } from "../../Axios/axiosBase";
 import { useNavigate } from "react-router-dom";
 
-
-
-// const message = "God is good...all the time!!!"
-
-
-
 function Home() {
   const {auth,setAuth} = useAuthContext()
   const [messageType, setMessageType ]= useState("")
@@ -22,27 +16,39 @@ function Home() {
     let response
     if (queryKey[1] === 'private'){
       response = await axiosBase.get('/messages/private',{
-        // withCredentials: true,
         headers: {
           auhtorisation: `Bearer ${auth?.accessToken}`
         }
       } )
     }else{
-      response = await axiosBase.get('/messages/public')
+      response = await axiosBase.get('/messages/public',{
+        headers: {
+          auhtorisation: `Bearer ${auth?.accessToken}`
+        }
+      } )
     }
     return response.data
   }
   const {isLoading,error} = useQuery(['messages', messageType], fetchMessage, {
     enabled: querySwitch,
     onSuccess: (data) => {
+      console.log(data)
       setQuerySwitch(false)
+      if(data.newAccessToken !== undefined){
+        console.log(`token is refreshed`)
+        setAuth((prev) => {return {...prev, accessToken: data.newAccessToken}})
+        setMessage(data.message)
+        return
+      }
+      
+      console.log(`token still good`)
       setMessage(data.message)
+      
     },
     onError: (error) => {
-      console.log(`scrrrrrrrrr`,error)
       if(error.response.status === 403) {
-        setAuth(null)
         alert('Your current session has expired. Please login to continue')
+        setAuth(null)
         navigate('/login')
       }
 

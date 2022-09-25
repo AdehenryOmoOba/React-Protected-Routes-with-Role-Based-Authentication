@@ -3,13 +3,28 @@ import "../../App.css";
 import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../Authorization/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import {useMutation} from 'react-query'
+
+const logout = async () => {
+  const logoutURL = `/logout`;
+  const response = await axiosBase.post(logoutURL)
+  return response.data
+}
 
 function Header() {
   const navigate = useNavigate();
-  const { logout, auth } = useAuthContext();
+  const { logout, auth ,setAuth} = useAuthContext();
+  const {mutate,isLoading} = useMutation(logout,{
+    onSuccess: (response) => {
+      setAuth((prev) => null)
+      navigate('/')
+    },
+    onError: (error) => console.log(error.response.data.error)
+  })
 
   const logoutHandler = () => {
-    logout();
+    mutate()
+    // logout();
     navigate("/");
   };
 
