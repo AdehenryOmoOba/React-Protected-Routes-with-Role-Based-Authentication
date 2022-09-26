@@ -7,7 +7,10 @@
 }
 html,button,input{
   font-size: 50%;
-    font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito', sans-serif;
+}
+body{
+  overflow-x: hidden;
 }
 
 .App {
@@ -85,6 +88,7 @@ a:active{
 }
 main{
   height: calc(100vh - 7rem);
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;

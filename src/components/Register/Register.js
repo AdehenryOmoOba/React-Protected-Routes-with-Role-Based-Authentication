@@ -42,7 +42,7 @@ function Register() {
     <main>
        {isLoading ? <Loading />
        : <>
-      <p>Register</p>
+      <p style={{textAlign:'center'}}>Register</p>
       <div className="formControl">
         <label htmlFor="username">Username</label>
         <input

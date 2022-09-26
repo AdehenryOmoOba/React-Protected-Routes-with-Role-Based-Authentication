@@ -46,9 +46,8 @@ function Login() {
 
   return (
     <main>
-      {isLoading ? <Loading />
-       : <>
-      <p>Login</p>
+      {isLoading && <Loading />}
+      <p style={{textAlign:'center'}}>Login</p>
       <div className="formControl">
         <label htmlFor="username">Username</label>
         <input
@@ -75,7 +74,6 @@ function Login() {
           Login
         </button>
       </div>
-      </>}
     </main>
   );
 }

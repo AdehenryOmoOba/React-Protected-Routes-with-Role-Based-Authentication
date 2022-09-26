@@ -1,0 +1,57 @@
+.spinner{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0.1rem);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    display: grid;
+    place-content: center;
+
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 2rem;
+    width: 2rem;
+}
+.block{
+    flex: 1;
+    position: relative;
+}
+.first::before,.first::after,.second::before,.third::before,.third::after{
+    position: absolute;
+    content: "";
+    height: 0.8rem;
+    width: 0.8rem;
+    background-color: #030311;
+    border-radius: 50%;
+}
+.first::before,.third::before{
+    top: 50%;
+    left: 0%;
+    translate: 0% -50%;
+}
+.first::after,.third::after{
+    top: 50%;
+    right: 0%;
+    translate: 0% -50%;
+}
+.second::before{
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+.spin{
+    animation: spin 1s infinite linear;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
